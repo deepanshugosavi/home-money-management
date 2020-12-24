@@ -47,7 +47,7 @@ const Example = (props) => {
       </Form>
       <div className="text-center">
         <Button color="primary">Sumbit</Button>
-        <Link to="/">
+        <Link to="/home-money-management">
           <Button color="warning ml-2">login Screen</Button>
         </Link>
       </div>

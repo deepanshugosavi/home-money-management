@@ -19,13 +19,21 @@ function App() {
   return (
     <Router>
       <main className="container">
-        <Route path="/user" component={Success} exact />
+        <Route path="/home-money-management/user" component={Success} exact />
         {state.email !== "" ? (
-          <Redirect to="/user" />
+          <Redirect to="/home-money-management/user" />
         ) : (
           <Fragment>
-            <Route path="/" component={() => Login(handleLogin)} exact />
-            <Route path="/register" component={Register} exact />
+            <Route
+              path="/home-money-management"
+              component={() => Login(handleLogin)}
+              exact
+            />
+            <Route
+              path="/home-money-management/register"
+              component={Register}
+              exact
+            />
           </Fragment>
         )}
       </main>

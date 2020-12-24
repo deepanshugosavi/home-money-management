@@ -68,7 +68,7 @@ const Login = (props) => {
         <Button color="primary" onClick={server_login}>
           Sumbit
         </Button>
-        <Link to="/register">
+        <Link to="/home-money-management/register">
           <Button color="warning ml-2">Register</Button>
         </Link>
       </div>
