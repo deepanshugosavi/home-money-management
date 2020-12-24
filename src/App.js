@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Login from "./components/Login.js";
+import Register from "./components/Register";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
+import { Fragment, useState } from "react";
+import Success from "./components/Success";
 
 function App() {
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLogin = (data) => {
+    console.log(data);
+    setState({ email: data["email"], password: data["password"] });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <main className="container">
+        <Route path="/user" component={Success} exact />
+        {state.email !== "" ? (
+          <Redirect to="/user" />
+        ) : (
+          <Fragment>
+            <Route path="/" component={() => Login(handleLogin)} exact />
+            <Route path="/register" component={Register} exact />
+          </Fragment>
+        )}
+      </main>
+    </Router>
   );
 }
 
